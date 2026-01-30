@@ -1,5 +1,6 @@
 package aleosh.online.learnss
 
+import aleosh.online.learnss.features.home.views.HomeView
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LearnSSTheme {
-
+                HomeView()
             }
         }
     }
