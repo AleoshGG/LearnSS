@@ -6,6 +6,8 @@ import aleosh.online.learnss.core.ui.theme.LearnSSTheme
 import aleosh.online.learnss.features.lessons.solarSystem.ui.components.DailyImageCard
 import aleosh.online.learnss.features.lessons.solarSystem.ui.components.PlanetCard
 import aleosh.online.learnss.features.lessons.solarSystem.ui.components.SunCard
+import aleosh.online.learnss.features.lessons.solarSystem.ui.viewModels.SolarSystemViewModel
+import aleosh.online.learnss.features.lessons.solarSystem.ui.viewModels.SolarSystemViewModelFactory
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +25,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,6 +33,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import java.util.Date
 
 data class PlanetData(
@@ -49,7 +54,13 @@ val planets = listOf(
     PlanetData("Saturn", "Ringed planet...", R.drawable.ic_mercury_background)
 )
 @Composable
-fun SolarSystemView() {
+fun SolarSystemView(
+    factory : SolarSystemViewModelFactory
+) {
+
+    val viewModel: SolarSystemViewModel = viewModel(factory = factory)
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -67,8 +78,8 @@ fun SolarSystemView() {
         ) {
 
             DailyImageCard(
-                date = Date().toString(),
-                imageRes = R.drawable.ic_nasa_background
+                date = uiState.dailyImage.date,
+                imageUrl = uiState.dailyImage.imgSource,
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -137,6 +148,6 @@ fun SolarSystemView() {
 @Composable
 fun HomeViewPreview() {
     LearnSSTheme {
-        SolarSystemView()
+        //SolarSystemView()
     }
 }

@@ -1,6 +1,8 @@
 package aleosh.online.learnss.core.navigation
 
+import aleosh.online.learnss.core.di.AppContainer
 import aleosh.online.learnss.features.home.views.HomeView
+import aleosh.online.learnss.features.lessons.solarSystem.di.SolarSystemModule
 import aleosh.online.learnss.features.lessons.solarSystem.ui.views.SolarSystemView
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
@@ -8,7 +10,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun NavigationWrapper() {
+fun NavigationWrapper(appContainer: AppContainer) {
+
+    val lessionSolarSystemModule = SolarSystemModule(appContainer)
+
     val navController = rememberNavController()
 
     NavHost(
@@ -22,7 +27,7 @@ fun NavigationWrapper() {
         }
 
         composable<Screen.LessonSolarSystem> {
-            SolarSystemView()
+            SolarSystemView(lessionSolarSystemModule.provideSolarSystemViewModelFactory())
         }
     }
 

@@ -58,14 +58,13 @@ fun SunCard(
                     text = "THE SUN",
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
                 )
                 Text(
                     text = "It is a Star of neutrons, is formatted since 2.3 million years, the age is definitely most old in the solar system.",
                     color = Color.White,
                     fontSize = 14.sp,
                     lineHeight = 13.sp,
-                    textAlign = TextAlign.End,
                 )
             }
         }
