@@ -1,6 +1,6 @@
 package aleosh.online.learnss.features.lessons.solarSystem.ui.components
 
-import aleosh.online.learnss.features.lessons.solarSystem.ui.views.PlanetData
+import aleosh.online.learnss.features.lessons.solarSystem.domain.entities.PlanetData
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,11 +17,13 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,8 +35,18 @@ fun PlanetCard(
     planet: PlanetData,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+
+    val drawableId = remember(planet.imageRes) {
+        context.resources.getIdentifier(
+            planet.imageRes,
+            "drawable",
+            context.packageName
+        )
+    }
+
     Card(
-        modifier = modifier.height(140.dp).fillMaxWidth(), // Altura fija para uniformidad
+        modifier = modifier.height(150.dp).fillMaxWidth(), // Altura fija para uniformidad
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHighest)
     ) {
@@ -52,7 +64,7 @@ fun PlanetCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 // Imagen circular pequeña
                 Image(
-                    painter = painterResource(id = planet.imageRes),
+                    painter = painterResource(drawableId),
                     contentDescription = planet.name,
                     modifier = Modifier
                         .size(50.dp)

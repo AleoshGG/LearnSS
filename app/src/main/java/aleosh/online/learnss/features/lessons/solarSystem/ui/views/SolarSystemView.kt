@@ -37,22 +37,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import java.util.Date
 
-data class PlanetData(
-    val name: String,
-    val description: String,
-    val imageRes: Int // O String si usas Coil/Glide
-)
 
-val planets = listOf(
-    PlanetData("Mercury", "It is a Star of neutrons, is formatted since 2.3 million years, the age is definitely most old in the solar system.", R.drawable.ic_mercury_background),
-    PlanetData("Venus", "The hottest planet...", R.drawable.ic_mercury_background), // Reemplaza con tus iconos
-    PlanetData("Earth", "Our home planet...", R.drawable.ic_mercury_background),
-    PlanetData("Mars", "The red planet...", R.drawable.ic_mercury_background),
-    PlanetData("Jupiter", "Gas giant...", R.drawable.ic_mercury_background),
-    PlanetData("Saturn", "Ringed planet...", R.drawable.ic_mercury_background),
-    PlanetData("Jupiter", "Gas giant...", R.drawable.ic_mercury_background),
-    PlanetData("Saturn", "Ringed planet...", R.drawable.ic_mercury_background)
-)
 @Composable
 fun SolarSystemView(
     factory : SolarSystemViewModelFactory
@@ -60,6 +45,8 @@ fun SolarSystemView(
 
     val viewModel: SolarSystemViewModel = viewModel(factory = factory)
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiStatePlanetData by viewModel.uiStatePlanetData.collectAsStateWithLifecycle()
+
 
     Column(
         modifier = Modifier
@@ -101,7 +88,8 @@ fun SolarSystemView(
                 )
 
                 SunCard(
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    planet = uiStatePlanetData.planetData[0],
                 )
             }
 
@@ -127,7 +115,7 @@ fun SolarSystemView(
                 contentPadding = PaddingValues(bottom = 16.dp),      // Padding final para no cortar el último elemento
                 modifier = Modifier.fillMaxSize()
             ) {
-                items(planets) { planet ->
+                items(uiStatePlanetData.planetData.drop(1)) { planet ->
                     PlanetCard(
                         planet = planet,
                     )
