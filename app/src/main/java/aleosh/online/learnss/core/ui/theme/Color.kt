@@ -1,4 +1,4 @@
-package com.example.compose
+package aleosh.online.learnss.core.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF545D6A)
