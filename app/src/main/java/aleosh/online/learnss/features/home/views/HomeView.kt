@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun HomeView() {
+fun HomeView(navToLessons: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -83,7 +83,7 @@ fun HomeView() {
                 .align(Alignment.Center)
                 .fillMaxWidth()
         ) {
-            // Acción al hacer click (ej. navegar al menú)
+            navToLessons()
         }
 
         Row(
@@ -120,6 +120,6 @@ fun HomeView() {
 @Composable
 fun HomeViewPreview() {
     LearnSSTheme {
-        HomeView()
+        HomeView(navToLessons = {})
     }
 }
