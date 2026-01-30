@@ -69,7 +69,7 @@ fun HomeView() {
 
             Text(
                 text = "This app helps make your learning\n\nmore interesting",
-                color = Color.LightGray,
+                color = Color.White,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontSize = 25.sp
                 )
@@ -78,7 +78,10 @@ fun HomeView() {
         }
 
         PulsingButton(
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier
+                .padding(horizontal = 100.dp)
+                .align(Alignment.Center)
+                .fillMaxWidth()
         ) {
             // Acción al hacer click (ej. navegar al menú)
         }

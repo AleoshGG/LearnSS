@@ -24,13 +24,14 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun PulsingButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
-    // Configuración de la animación infinita
+
     val infiniteTransition = rememberInfiniteTransition(label = "pulse")
 
     // Animamos la escala (tamaño)
@@ -44,17 +45,6 @@ fun PulsingButton(
         label = "scale"
     )
 
-    // Animamos la opacidad (opcional, para darle más efecto)
-    val alpha by infiniteTransition.animateFloat(
-        initialValue = 1f,
-        targetValue = 0.7f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1000),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "alpha"
-    )
-
     Row(
         modifier = modifier
             .scale(scale) // Aplicamos la escala animada
@@ -64,8 +54,9 @@ fun PulsingButton(
         Text(
             text = "Get Start",
             color = Color.White,
-            style = MaterialTheme.typography.headlineMedium.copy(
-                fontWeight = FontWeight.Bold
+            style = MaterialTheme.typography.headlineLarge.copy(
+                fontWeight = FontWeight.Bold,
+                fontSize = 60.sp
             )
         )
         Spacer(modifier = Modifier.width(8.dp))
@@ -74,7 +65,7 @@ fun PulsingButton(
             imageVector = Icons.Default.PlayArrow, // O usa tu propio vector drawable
             contentDescription = null,
             tint = Color.White,
-            modifier = Modifier.size(32.dp)
+            modifier = Modifier.size(60.dp)
         )
     }
 }
