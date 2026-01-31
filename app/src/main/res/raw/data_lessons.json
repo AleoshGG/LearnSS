@@ -2,46 +2,109 @@
   {
     "name": "Sun",
     "description": "It is a yellow dwarf star at the center of our system. Formed 4.6 billion years ago, it is the oldest and most massive object here.",
-    "imageRes": "ic_sun_background"
+    "imageRes": "ic_sun_background",
+    "planet_params": {
+      "q": "sun",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "2012",
+      "year_end": "2026"
+    }
   },
   {
     "name": "Mercury",
     "description": "It is the smallest planet and the closest to the Sun. It has a cratered surface and experiences extreme temperature shifts between day and night.",
-    "imageRes": "ic_mercury_background"
+    "imageRes": "ic_mercury_background",
+    "planet_params": {
+      "q": "Mercury planet",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "2010",
+      "year_end": "2026"
+    }
   },
   {
     "name": "Venus",
     "description": "It is the hottest planet due to a thick, toxic atmosphere. It rotates very slowly in the opposite direction compared to most other planets.",
-    "imageRes": "ic_venus_background"
+    "imageRes": "ic_venus_background",
+    "planet_params": {
+      "q": "Venus planet",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "1985",
+      "year_end": "2026"
+    }
   },
   {
     "name": "Earth",
     "description": "It is the only known planet that supports life and liquid water. It has a protective atmosphere and a diverse range of active ecosystems.",
-    "imageRes": "ic_earth_background"
+    "imageRes": "ic_earth_background",
+    "planet_params": {
+      "q": "earth",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "1920",
+      "year_end": "2026"
+    }
   },
   {
     "name": "Mars",
     "description": "It is known as the Red Planet due to iron oxide. It features giant volcanoes, deep canyons, and evidence of ancient water flows on surface.",
-    "imageRes": "ic_mars_background"
+    "imageRes": "ic_mars_background",
+    "planet_params": {
+      "q": "mars planet",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "1920",
+      "year_end": "2026"
+    }
   },
   {
     "name": "Jupiter",
     "description": "It is the largest planet and a massive gas giant. It has a famous Great Red Spot and dozens of moons orbiting its gravity.",
-    "imageRes": "ic_jupiter_background"
+    "imageRes": "ic_jupiter_background",
+    "planet_params": {
+      "q": "jupiter planet",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "1920",
+      "year_end": "2004"
+    }
   },
   {
     "name": "Saturn",
     "description": "It is a gas giant famous for its complex system of icy rings. It is the least dense planet and has many unique moons.",
-    "imageRes": "ic_saturn_background"
+    "imageRes": "ic_saturn_background",
+    "planet_params": {
+      "q": "Saturn",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "1920",
+      "year_end": "2026"
+    }
   },
   {
     "name": "Uranus",
     "description": "It is an ice giant with a unique tilt, rotating on its side. It has a faint ring system and a very cold atmosphere.",
-    "imageRes": "ic_uranus_background"
+    "imageRes": "ic_uranus_background",
+    "planet_params": {
+      "q": "Uranus",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "1932",
+      "year_end": "2014"
+    }
   },
   {
     "name": "Neptune",
     "description": "It is the farthest planet and a dark, cold ice giant. It experiences the strongest winds in the solar system and appears bright blue.",
-    "imageRes": "ic_neptune_background"
+    "imageRes": "ic_neptune_background",
+    "planet_params": {
+      "q": "Neptune",
+      "page": "1",
+      "media_type": "image",
+      "year_start": "1960",
+      "year_end": "2016"
+    }
   }
 ]

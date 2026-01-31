@@ -9,4 +9,7 @@ sealed class Screen {
 
     @Serializable
     object LessonSolarSystem
+
+    @Serializable
+    object LessonPlanets
 }
