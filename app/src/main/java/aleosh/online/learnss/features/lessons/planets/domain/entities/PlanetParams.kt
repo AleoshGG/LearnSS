@@ -1,5 +1,8 @@
 package aleosh.online.learnss.features.lessons.planets.domain.entities
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class PlanetParams(
     val q: String,
     val page: String,

@@ -1,4 +1,4 @@
-package aleosh.online.learnss.features.lessons.solarSystem.ui.components
+package aleosh.online.learnss.features.lessons.planets.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -30,14 +30,17 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 
 @Composable
-fun CardPlanet() {
+fun CardPlanet(
+    urlImage: String,
+    title: String,
+    description: String,
+) {
 
     var expanded by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(432.dp)
             .clickable {
                 expanded = !expanded
             },
@@ -45,26 +48,26 @@ fun CardPlanet() {
 
     ) {
         Text(
-            text = "Title asi bien largo",
+            text = title,
             style = MaterialTheme.typography.headlineLarge,
             color = Color.White,
             modifier = Modifier
-                .padding(32.dp)
+                .padding(top = 16.dp, start = 32.dp, end = 32.dp)
                 .fillMaxWidth()
         )
 
         SubcomposeAsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data("")
+                .data(urlImage)
                 .crossfade(true)
                 .build(),
             contentDescription = "Daily space image",
             contentScale = ContentScale.Crop,
             // Modifier para el tamaño y forma
             modifier = Modifier
-                .padding(32.dp)
+                .padding(horizontal = 32.dp, vertical = 4.dp)
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(240.dp)
                 .clip(RoundedCornerShape(8.dp)),
 
             // Bloque de carga: Se muestra mientras la imagen se descarga
@@ -95,21 +98,25 @@ fun CardPlanet() {
             }
         )
 
-
-
         Text(
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            text = "Description:",
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+                .padding(start = 32.dp, end = 32.dp, bottom = 4.dp),
             textAlign = TextAlign.Justify,
-            style = MaterialTheme.typography.headlineSmall,
+            style = MaterialTheme.typography.labelSmall,
+            color = Color.Gray,
+        )
+
+        Text(
+            text = description,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 32.dp, end = 32.dp, bottom = 16.dp),
+            textAlign = TextAlign.Justify,
+            style = MaterialTheme.typography.labelLarge,
             color = Color.White,
             maxLines = if(expanded) Int.MAX_VALUE else 1,
         )
-
-
-
     }
-
 }

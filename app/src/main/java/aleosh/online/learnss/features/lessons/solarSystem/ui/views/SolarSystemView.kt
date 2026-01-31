@@ -3,6 +3,7 @@ package aleosh.online.learnss.features.lessons.solarSystem.ui.views
 import aleosh.online.learnss.R
 import aleosh.online.learnss.core.ui.layout.TitlePageLayout
 import aleosh.online.learnss.core.ui.theme.LearnSSTheme
+import aleosh.online.learnss.features.lessons.planets.domain.entities.PlanetParams
 import aleosh.online.learnss.features.lessons.solarSystem.ui.components.DailyImageCard
 import aleosh.online.learnss.features.lessons.solarSystem.ui.components.PlanetCard
 import aleosh.online.learnss.features.lessons.solarSystem.ui.components.SunCard
@@ -10,6 +11,7 @@ import aleosh.online.learnss.features.lessons.solarSystem.ui.viewModels.SolarSys
 import aleosh.online.learnss.features.lessons.solarSystem.ui.viewModels.SolarSystemViewModelFactory
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -40,7 +42,8 @@ import java.util.Date
 
 @Composable
 fun SolarSystemView(
-    factory : SolarSystemViewModelFactory
+    factory : SolarSystemViewModelFactory,
+    navigateTo: (PlanetParams) -> Unit,
 ) {
 
     val viewModel: SolarSystemViewModel = viewModel(factory = factory)
@@ -88,7 +91,11 @@ fun SolarSystemView(
                 )
 
                 SunCard(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .clickable{
+                            navigateTo(uiStatePlanetData.planetData[0].planetParams)
+                        },
                     planet = uiStatePlanetData.planetData[0],
                 )
             }
@@ -113,10 +120,15 @@ fun SolarSystemView(
                 horizontalArrangement = Arrangement.spacedBy(16.dp), // Espacio horizontal entre cards
                 verticalArrangement = Arrangement.spacedBy(16.dp),   // Espacio vertical entre cards
                 contentPadding = PaddingValues(bottom = 16.dp),      // Padding final para no cortar el último elemento
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
             ) {
                 items(uiStatePlanetData.planetData.drop(1)) { planet ->
                     PlanetCard(
+                        modifier = Modifier
+                            .clickable{
+                            navigateTo(planet.planetParams)
+                        },
                         planet = planet,
                     )
                 }
