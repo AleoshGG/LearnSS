@@ -11,7 +11,7 @@ class PlanetRepositoryImpl (
 ) : PlanetRepository {
 
 
-    override suspend fun getPlanet(params: PlanetParams): Planet {
+    override suspend fun getPlanet(params: PlanetParams): List<Planet> {
         val response = api.getImages(
             query = params.q,
             page = params.page,
@@ -20,5 +20,7 @@ class PlanetRepositoryImpl (
             yearEnd = params.year_end
         )
         return response.toDomain()
+
+
     }
 }

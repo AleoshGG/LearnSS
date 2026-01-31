@@ -53,11 +53,11 @@ fun PlanetView(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            items(uiState.planet.imagesUrl) { planet ->
+            items(uiState.planets.take(20)) { planet ->
                 CardPlanet(
-                    urlImage = planet,
-                    title = uiState.planet.title,
-                    description = uiState.planet.description,
+                    urlImage = planet.imagesUrl,
+                    title = planet.title,
+                    description = planet.description,
                 )
             }
         }

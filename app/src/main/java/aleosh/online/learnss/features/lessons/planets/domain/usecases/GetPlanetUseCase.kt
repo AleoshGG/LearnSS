@@ -7,7 +7,7 @@ import aleosh.online.learnss.features.lessons.planets.domain.repositories.Planet
 class GetPlanetUseCase (
     private val repository: PlanetRepository,
 ) {
-    suspend operator fun invoke(params: PlanetParams): Result<Planet> {
+    suspend operator fun invoke(params: PlanetParams): Result<List<Planet>> {
         return try {
             val planet = repository.getPlanet(params)
             Result.success(planet)

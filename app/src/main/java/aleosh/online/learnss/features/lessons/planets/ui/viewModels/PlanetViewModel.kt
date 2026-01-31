@@ -26,7 +26,7 @@ class PlanetViewModel(
             _uiState.update { currentState ->
                 result.fold(
                     onSuccess = { data ->
-                        currentState.copy(isLoading = false, planet = data)
+                        currentState.copy(isLoading = false, planets = data)
                     },
                     onFailure = { error ->
                         currentState.copy(isLoading = false, error = error.message)
